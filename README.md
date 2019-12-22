@@ -8,8 +8,8 @@ Why? A lot of people (myself included) dont agree with the way thetvdb.com is be
 
 This currently does _almost_ nothing.
 I had added the ability to read from a SQLite database just for development purpose. 
-At the moment all that will actually do is display all series that are in the DB (just one, id=1 series=family guy summary=whatever i pulled from thetvdb.com)
-Use "DB Browser for SQLite" to view edit data if you want.
+I have setup the DB to match the output from thetvdb.com.
+Use "DB Browser for SQLite" to view and edit the DB if you want.
 
 ## What am i using
 This is currently being written in python using FastAPI (https://fastapi.tiangolo.com)
