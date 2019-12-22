@@ -1,6 +1,23 @@
-from fastapi import FastAPI
+from typing import List
+
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.orm import Session
+
+from . import crud, models, schemas
+from .database import SessionLocal, engine
+
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+
+# Dependency
+def get_db():
+    try:
+        db = SessionLocal()
+        yield db
+    finally:
+        db.close()
 
 
 @app.get("/")
@@ -23,8 +40,8 @@ def refresh_token():
 
 ### Episodes ###
 @app.get("/episodes/{id}")
-def episode_id():
-    return {"Episde": "Blah"}
+def read_id(id):
+    return {"Episode ID": id}
 
 ### Languages ###
 @app.get("/languages")
@@ -50,6 +67,11 @@ def series_search_param():
     return {"Series": "With params"}
 
 ### Series ###
+@app.get("/series/", response_model=List[schemas.Series])
+def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    series = crud.get_series(db, skip=skip, limit=limit)
+    return series
+
 @app.get("/series/{id}")
 def series_id():
     return {"Series": "ID"}
