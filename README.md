@@ -1,13 +1,15 @@
 # OS-TVDB
 
-This is a VERY EARLY attempt at building an Open Source clone of tvdb.com.
-Why? A lot of people (myself included) dont agree with the way tvdb.com is being run...so as always, if you dont like something, do something about it. So here we are...
+This is a VERY EARLY attempt at building an Open Source clone of thetvdb.com.
+Why? A lot of people (myself included) dont agree with the way thetvdb.com is being run...so as always, if you dont like something, do something about it. So here we are...
 
 
 # Current State
 
-This is completely useless as it is. It does nothing apart from return json that is statically set in main.py
-All i have done is layed out the endpoints the same as tvdb.com so this _could_ be a drop in replacement. 
+This currently does _almost_ nothing.
+I had added the ability to read from a SQLite database just for development purpose. 
+At the moment all that will actually do is display all series that are in the DB (just one, id=1 series=family guy summary=whatever i pulled from thetvdb.com)
+Use "DB Browser for SQLite" to view edit data if you want.
 
 ## What am i using
 This is currently being written in python using FastAPI (https://fastapi.tiangolo.com)
