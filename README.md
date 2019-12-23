@@ -23,7 +23,7 @@ A web UI can then be written in any language that calls the API.
 ## Test it yourself?
 
 You will need to install the FastAPI python module `pip install fastapi[all]`.
-Then, once you have pulled down the repo you can start the develoment server with `uvicorn main:app --reload`
+Then, once you have pulled down the repo you can start the develoment server with `uvicorn OS-TVDB.main:app --reload`
 
 You should then be able to get to `/` on `127.0.0.1:8000`
 You can also get to the swagger UI on `127.0.0.1:8000/docs`
