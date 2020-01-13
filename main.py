@@ -72,9 +72,12 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     series = crud.get_series(db, skip=skip, limit=limit)
     return series
 
-@app.get("/series/{id}")
-def series_id():
-    return {"Series": "ID"}
+@app.get("/series/{series_id}", response_model=schemas.Series)
+def series_id(series_id: int, db: Session = Depends(get_db)):
+    db_series = crud.get_series_by_id(db, series_id=series_id)
+    if db_series is None:
+        raise HTTPException(status_code=404, detail="Series not found")
+    return db_series
 
 @app.head("/series/{id}")
 def series_id():
